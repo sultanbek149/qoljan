@@ -59,8 +59,6 @@ function search(searchin) {
 const modal = document.querySelector('#open-modal')
 
 function sendMessage() {
-    console.log(input.innerHTML)
-
     const text = `Данные с сайта: %0A<b>Имя:</b> <i>${username.value}</i> %0A<b>Заказ:</b> <i>${order.value}</i>%0A<b>Место:</b> <i>${input.innerText}</i> %0A<b>Адресс доставки:</b> <i>${address.value}</i> %0A<b>Телефон:</b> <i>${phone.value}</i>`
 
 
@@ -72,6 +70,9 @@ function sendMessage() {
     const xhr = new XMLHttpRequest();
 
     // Handle the 'load' event for successful completion of the request    
+
+    if (!window.navigator.onLine) return alert("Прошу проверьте свое интернет соединение!!!")
+
 
     xhr.open("GET", url, true);
     xhr.send();
